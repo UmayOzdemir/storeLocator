@@ -19,19 +19,6 @@ public class GeoCode {
         // The response is in JSON format.
         HttpResponse response = httpProtocol.send(request);
 		JSONParser parser = JSON.createParser(response.getBody());
-		//  while (parser.nextToken() != null) {
-        //     if ((parser.getCurrentToken() == JSONToken.FIELD_NAME) && 
-        //         (parser.getText() == 'lat')) {
-        //         // Get the value.
-        //         parser.nextToken();
-        //         lat = parser.getText();
-        //     }
-        //     if ((parser.getCurrentToken() == JSONToken.FIELD_NAME) && 
-        //         (parser.getText() == 'lng')){
-        //             parser.nextToken();
-        //             lng = parser.getText();
-        //     }
-        // }
 
 	 while (parser.nextToken() != null) {
             if ((parser.getCurrentToken() == JSONToken.FIELD_NAME) && 

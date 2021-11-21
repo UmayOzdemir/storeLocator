@@ -127,7 +127,7 @@ export default class StoreLocator extends LightningElement {
                      });
                  }
 
-            },1000)
+            },500)
         }
         catch(e){
             console.log('error in filter');
