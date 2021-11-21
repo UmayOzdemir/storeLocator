@@ -55,6 +55,7 @@ export default class StoreLocator extends LightningElement {
    store = true;
    typeSelectList=[];
    street='';
+   editingDisabled = false;
 
    options = [
     { label: 'Bar/Restaurant', value: 'Bar/Restaurant' },
@@ -69,6 +70,7 @@ export default class StoreLocator extends LightningElement {
             this.modalTitle='New Store';
             this.submitButton='Create';
             this.isUpdate = false;
+            this.editingDisabled = false;
             this.clearModalFields();
         }
         else if('editButton'== event.target.name){
@@ -76,7 +78,7 @@ export default class StoreLocator extends LightningElement {
             this.modalTitle = 'Edit';
             this.submitButton = 'Submit';
             this.isUpdate = true;
-
+            this.editingDisabled = true;
             this.setSelectedStoreInfo(this.selectedAccountId);
         }
     }
@@ -251,6 +253,7 @@ export default class StoreLocator extends LightningElement {
             this.wiredStoreList = result;    
             console.log(result.data)   
             result.data.forEach((dataItem,index) => {
+                //If latitude longitude was succesfully received we will use them to place markers.
                 if(dataItem.Latitude__c && dataItem.Longitude__c){
                     this.allMarkers = [...this.allMarkers ,
                         {

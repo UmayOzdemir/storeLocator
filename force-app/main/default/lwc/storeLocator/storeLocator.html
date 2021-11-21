@@ -18,11 +18,11 @@
              <lightning-card title={modalTitle} icon-name="standard:record">
                 <div class="slds-m-around_medium">
                    <lightning-input label="Name" onchange={handleNameChange} class="slds-m-bottom_x-small" value={name} required></lightning-input>
-                   <lightning-input label="Street" onchange={handleStreetChange} class="slds-m-bottom_x-small" value={street} required></lightning-input>
-                   <lightning-input label="City" onchange={handleCityChange} class="slds-m-bottom_x-small" value={city} required></lightning-input>
-                   <lightning-input label="PostalCode" onchange={handlePostalCodeChange} class="slds-m-bottom_x-small" value={postalCode} required></lightning-input>
-                   <lightning-input label="State" onchange={handleStateChange} class="slds-m-bottom_x-small" value={state} required></lightning-input>
-                   <lightning-input label="Country" onchange={handleCountryChange} class="slds-m-bottom_x-small" value={country} required></lightning-input>
+                   <lightning-input label="Street" onchange={handleStreetChange} class="slds-m-bottom_x-small" value={street} required disabled={editingDisabled}></lightning-input>
+                   <lightning-input label="City" onchange={handleCityChange} class="slds-m-bottom_x-small" value={city} required disabled={editingDisabled}></lightning-input>
+                   <lightning-input label="PostalCode" onchange={handlePostalCodeChange} class="slds-m-bottom_x-small" value={postalCode} required disabled={editingDisabled}></lightning-input>
+                   <lightning-input label="State" onchange={handleStateChange} class="slds-m-bottom_x-small" value={state} required disabled={editingDisabled}></lightning-input>
+                   <lightning-input label="Country" onchange={handleCountryChange} class="slds-m-bottom_x-small" value={country} required disabled={editingDisabled}></lightning-input>
                    <lightning-checkbox-group name="types"
                                   label="Types"
                                   options={options}
