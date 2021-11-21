@@ -3,7 +3,8 @@ public class GeoCode {
     public static void parseJSONResponse(String aid, String street, String city, String state, String postalCode, String country) {  
 		String lat;
         String lng;
-        Integer cnt = 0;
+        Integer latCnt = 0;
+        Integer lonCnt = 0;
         String address=street.replaceAll(' ', '+')+','+city+','+state+','+postalCode+','+country ;
         String key='AIzaSyAchoZtcDA0OE_sc6QM7PxhCWId0aQilRU';
         Account store;
@@ -20,21 +21,22 @@ public class GeoCode {
         HttpResponse response = httpProtocol.send(request);
 		JSONParser parser = JSON.createParser(response.getBody());
 
-	 while (parser.nextToken() != null) {
+	    while (parser.nextToken() != null) {
             if ((parser.getCurrentToken() == JSONToken.FIELD_NAME) && 
                 (parser.getText() == 'lat')) {
                 // Get the value.
                     parser.nextToken();
-                    if (cnt != 3) {
+                    if (latCnt != 3) { //location is the third object that contains lat and lon
                         lat = parser.getText();
-                        cnt++;
+                        latCnt++;
                     }
             }
             if ((parser.getCurrentToken() == JSONToken.FIELD_NAME) && 
                 (parser.getText() == 'lng')){
                     parser.nextToken();
-                    if (cnt != 3) {
+                    if (lonCnt != 3) {
                         lng = parser.getText();
+                        lonCnt++;
                     }
             }
         }
